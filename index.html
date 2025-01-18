@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Resume Maker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin: 20px 0 10px 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+            border-color: #4A90E2;
+            outline: none;
+        }
+
+        button {
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+        .input-group, .input2-group, .input3-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .input-group label, .input2-group label {
+            display: block;
+            width: 30%;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .input-group input, .input2-group input {
+            display: inline-block;
+            width: 65%;
+            margin-right: 10px;
+        }
+
+        .input-group input:last-child, .input2-group input:last-child {
+            margin-right: 0;
+        }
+
+        .input-group input {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        #education-inputs, #experience-inputs, #skill-inputs {
+            margin-bottom: 20px;
+        }
+
+        .form-group button {
+            margin-top: 10px;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <form class="container">
+        <h1>Automated Resume Maker</h1>
+
+        <h2>Personal Details</h2>
+        <label for="fullName">Full Name:</label>
+        <input type="text" required id="fullName">
+
+        <label for="email">Email:</label>
+        <input type="email" required id="email">
+
+        <label for="phone">Phone:</label>
+        <input type="email" required id="phone">
+
+        <h2>Add Reference</h2>
+
+        <label for="r-name">Name:</label>
+        <input type="text" required id="r-name">
+
+        <label for="r-email">Email:</label>
+        <input type="email" required id="r-email">
+
+        <label for="r-phone">Phone:</label>
+        <input type="email" required id="r-phone">
+
+        <label for="post">Post:</label>
+        <input type="text" required id="post">
+
+        <h2>Add Education</h2>
+        <div id="education-inputs">
+            <div class="input-group">
+                <label for="college">College:</label>
+                <input class="colleges" type="text" name="college[]" placeholder="Enter College Name" required>
+
+                <label for="session">Session:</label>
+                <input class="sessions" type="text" name="session[]" placeholder="Enter Session" required>
+
+                <label for="degree">Degree:</label>
+                <input class="degrees" type="text" name="degree[]" placeholder="Enter Degree" required>
+            </div>
+        </div>
+        <button type="button" id="add-education">Add More</button>
+
+        <h2>Add Experience</h2>
+        <div id="experience-inputs">
+            <div class="input-group">
+                <label for="company">Company:</label>
+                <input class="companies" type="text" name="company[]" placeholder="Enter Company Name" required>
+
+                <label for="time">Duration:</label>
+                <input class="times" type="text" name="time[]" placeholder="Enter Duration" required>
+            </div>
+        </div>
+        <button type="button" id="add-experience">Add More</button>
+
+        <h2>Add Skills</h2>
+        <div id="skill-inputs">
+            <div class="input3-group">
+                <input class="skills" type="text" name="skill[]" placeholder="Enter Skill" required>
+            </div>
+        </div>
+        <button type="button" id="add-skill">Add More</button>
+
+        <h2>About Me</h2>
+        <textarea placeholder="Tell about yourself"></textarea>
+
+        <button type="submit">Preview Resume</button>
+    </form>
+
+    <script>
+        document.getElementById('add-experience').addEventListener('click', function () {
+            const newInputGroup = document.createElement('div');
+            newInputGroup.classList.add('input-group');
+
+            newInputGroup.innerHTML = `
+            <label for="company">Company:</label>
+            <input class="companies" type="text" name="company[]" placeholder="Enter Company Name" required>
+
+            <label for="time">Duration:</label>
+            <input class="times" type="text" name="time[]" placeholder="Enter Duration" required>
+            `;
+
+            document.getElementById('experience-inputs').appendChild(newInputGroup);
+        });
+
+        document.getElementById('add-education').addEventListener('click', function () {
+            const newInputGroup = document.createElement('div');
+            newInputGroup.classList.add('input-group');
+
+            newInputGroup.innerHTML = `
+            <label for="college">College:</label>
+            <input class="colleges" type="text" name="college[]" placeholder="Enter College Name" required>
+        
+            <label for="session">Session:</label>
+            <input class="sessions" type="text" name="session[]" placeholder="Enter Session" required>
+        
+            <label for="degree">Degree:</label>
+            <input class="degrees" type="text" name="degree[]" placeholder="Enter Degree" required>
+            `;
+
+            document.getElementById('education-inputs').appendChild(newInputGroup);
+        });
+
+        document.getElementById('add-skill').addEventListener('click', function () {
+            const newInputGroup = document.createElement('div');
+            newInputGroup.classList.add('input3-group');
+
+            newInputGroup.innerHTML = `
+            <input class="skills" type="text" name="skill[]" placeholder="Enter Skill" required>
+            `;
+
+            document.getElementById('skill-inputs').appendChild(newInputGroup);
+        });
+    </script>
+
+</body>
+
+</html>
