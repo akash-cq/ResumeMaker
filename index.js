@@ -11,12 +11,14 @@ const degrees = document.getElementsByClassName("degrees");
 const companies = document.getElementsByClassName("companies");
 const times = document.getElementsByClassName("times");
 const skills = document.getElementsByClassName("skills");
-const about = document.getElementsByTagName("textarea");
+const about = document.querySelector("textarea");
+const adrs = document.querySelector("#adrs");
 const submitBtn = document.querySelector('button[type="submit"]');
 const show = document.querySelector(".show");
-const t = document.querySelector(".t");
+const t = document.querySelector(".cont");
 const down = document.querySelector(".down");
 const file = document.querySelector("#pic");
+const newBtn = document.querySelector(".new");
 const clg_val = [],
   sess_val = [],
   deg_val = [],
@@ -34,7 +36,7 @@ submitBtn.addEventListener("click", () => {
   const f = file.files[0];
   let imgsrc;
   if (f) {
-    imgsrc = URL.createObjectURL(f); 
+    imgsrc = URL.createObjectURL(f);
   }
   let html = `
     <html lang="en">
@@ -188,10 +190,10 @@ submitBtn.addEventListener("click", () => {
         </div>
         <h3>ABOUT ME</h3>
         <p class="about-content">
-        ${about.value}
+        ${about.innerText}
         </p>
         <h3>CONTACT</h3>
-        <div class="adrs">MUMBAI</div>
+        <div class="adrs">${adrs.value}</div>
         <div class="phone">${phone.value}</div>
         <div class="email">${email.value}</div>
         <h3>REFERENCE</h3>
@@ -263,21 +265,29 @@ submitBtn.addEventListener("click", () => {
     </body>
     </html>
     `;
-  t.classList.add("hide");
+  t.classList.add("t");
   show.classList.remove("hide");
-  show.innerHTML = html;
   down.classList.remove("hide");
+  newBtn.classList.remove("hide");
+  show.innerHTML = html;
 });
 down.addEventListener("click", () => {
-  if (!down.classList.contains("hide")) {
-    t.classList.remove("hide");
-    show.classList.add("hide");
-    down.innerText = "Download";
-    down.classList.add("hide");
-  } else {
-    down.innerHTML = "New One";
-    html2pdf()
-      .from(show) // Take the content from the "show" div
-      .save("resume.pdf");
-  }
+  down.innerHTML = "New One";
+  html2pdf()
+    .set({
+      margin: 1,
+      filename: "resume.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    })
+    .from(show)
+    .save();
+});
+
+newBtn.addEventListener("click", () => {
+  t.classList.remove("t");
+  show.classList.add("hide");
+  down.classList.add("hide");
+  newBtn.classList.add("hide");
 });

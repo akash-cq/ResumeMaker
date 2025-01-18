@@ -30,7 +30,7 @@
         color: #333;
       }
 
-      .container {
+      .cont {
         max-width: 900px;
         margin: 0 auto;
         background-color: white;
@@ -134,8 +134,14 @@
         border-radius: 4px;
         border: 1px solid #ddd;
       }
-      .hide{
-        display: hidden;
+      .hide {
+        display: none;
+      }
+      input {
+        padding: 10px;
+      }
+      .t{
+        display: none;
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
@@ -143,112 +149,114 @@
   </head>
 
   <body>
-    <div class="container t">
-    <h1>Automated Resume Maker</h1>
+    <div class="cont">
+      <h1>Automated Resume Maker</h1>
 
-    <h2>Personal Details</h2>
-    <label for="fullName">Full Name:</label>
-    <input type="text" required id="fullName" />
+      <h2>Personal Details</h2>
+      <label for="fullName">Full Name:</label>
+      <input type="text" required id="fullName" />
 
-    <label for="email">Email:</label>
-    <input type="email" required id="email" />
+      <label for="email">Email:</label>
+      <input type="email" required id="email" />
 
-    <label for="phone">Phone:</label>
-    <input type="phone" required id="phone" />
+      <label for="phone">Phone:</label>
+      <input type="phone" required id="phone" />
+      <label for="adrs">Address:</label>
+      <input type="address" required id="adrs" placeholder="you full address" />
+      <h2>Add Reference</h2>
 
-    <h2>Add Reference</h2>
+      <label for="r-name">Name:</label>
+      <input type="text" required id="r-name" />
 
-    <label for="r-name">Name:</label>
-    <input type="text" required id="r-name" />
+      <label for="r-email">Email:</label>
+      <input type="email" required id="r-email" />
 
-    <label for="r-email">Email:</label>
-    <input type="email" required id="r-email" />
+      <label for="r-phone">Phone:</label>
+      <input type="phone" required id="r-phone" />
 
-    <label for="r-phone">Phone:</label>
-    <input type="phone" required id="r-phone" />
+      <label for="post">Post:</label>
+      <input type="text" required id="post" />
 
-    <label for="post">Post:</label>
-    <input type="text" required id="post" />
+      <h2>Add Education</h2>
+      <div id="education-inputs">
+        <div class="input-group">
+          <label for="college">College:</label>
+          <input
+            class="colleges"
+            type="text"
+            name="college[]"
+            placeholder="Enter College Name"
+            required
+          />
 
-    <h2>Add Education</h2>
-    <div id="education-inputs">
-      <div class="input-group">
-        <label for="college">College:</label>
-        <input
-          class="colleges"
-          type="text"
-          name="college[]"
-          placeholder="Enter College Name"
-          required
-        />
+          <label for="session">Session:</label>
+          <input
+            class="sessions"
+            type="text"
+            name="session[]"
+            placeholder="Enter Session"
+            required
+          />
 
-        <label for="session">Session:</label>
-        <input
-          class="sessions"
-          type="text"
-          name="session[]"
-          placeholder="Enter Session"
-          required
-        />
-
-        <label for="degree">Degree:</label>
-        <input
-          class="degrees"
-          type="text"
-          name="degree[]"
-          placeholder="Enter Degree"
-          required
-        />
+          <label for="degree">Degree:</label>
+          <input
+            class="degrees"
+            type="text"
+            name="degree[]"
+            placeholder="Enter Degree"
+            required
+          />
+        </div>
       </div>
-    </div>
-    <button type="button" id="add-education">Add More</button>
+      <button type="button" id="add-education">Add More</button>
 
-    <h2>Add Experience</h2>
-    <div id="experience-inputs">
-      <div class="input-group">
-        <label for="company">Company:</label>
-        <input
-          class="companies"
-          type="text"
-          name="company[]"
-          placeholder="Enter Company Name"
-          required
-        />
+      <h2>Add Experience</h2>
+      <div id="experience-inputs">
+        <div class="input-group">
+          <label for="company">Company:</label>
+          <input
+            class="companies"
+            type="text"
+            name="company[]"
+            placeholder="Enter Company Name"
+            required
+          />
 
-        <label for="time">Duration:</label>
-        <input
-          class="times"
-          type="text"
-          name="time[]"
-          placeholder="Enter Duration"
-          required
-        />
+          <label for="time">Duration:</label>
+          <input
+            class="times"
+            type="text"
+            name="time[]"
+            placeholder="Enter Duration"
+            required
+          />
+        </div>
       </div>
-    </div>
-    <button type="button" id="add-experience">Add More</button>
+      <button type="button" id="add-experience">Add More</button>
 
-    <h2>Add Skills</h2>
-    <div id="skill-inputs">
-      <div class="input3-group">
-        <input
-          class="skills"
-          type="text"
-          name="skill[]"
-          placeholder="Enter Skill"
-          required
-        />
+      <h2>Add Skills</h2>
+      <div id="skill-inputs">
+        <div class="input3-group">
+          <input
+            class="skills"
+            type="text"
+            name="skill[]"
+            placeholder="Enter Skill"
+            required
+          />
+        </div>
       </div>
-    </div>
-    <button type="button" id="add-skill">Add More</button>
+      <button type="button" id="add-skill">Add More</button>
 
-    <h2>About Me</h2>
-    <textarea placeholder="Tell about yourself"></textarea>
-    Your Picture<input type="file" name="file" id="pic">
-    <button type="submit">Preview Resume</button>
-</div>
-<div class="show hide"></div>
-<button class="down hide">download</button>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+      <h2>About Me</h2>
+      <textarea placeholder="Tell about yourself"></textarea>
+      Your Picture<input type="file" name="file" id="pic" />
+      <button type="submit">Preview Resume</button>
+    </div>
+    <div class="show hide"></div>
+    <button class="down hide">download</button>
+    <button class="new hide">Another Resume</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 
     <script>
       document
