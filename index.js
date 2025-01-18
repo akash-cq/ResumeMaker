@@ -11,7 +11,7 @@ const degrees = document.getElementsByClassName("degrees");
 const companies = document.getElementsByClassName("companies");
 const times = document.getElementsByClassName("times");
 const skills = document.getElementsByClassName("skills");
-const about = document.querySelector("textarea");
+const about = document.getElementById('about-me');
 const adrs = document.querySelector("#adrs");
 const submitBtn = document.querySelector('button[type="submit"]');
 const show = document.querySelector(".show");
@@ -190,7 +190,7 @@ submitBtn.addEventListener("click", () => {
         </div>
         <h3>ABOUT ME</h3>
         <p class="about-content">
-        ${about.innerText}
+        ${about.value}
         </p>
         <h3>CONTACT</h3>
         <div class="adrs">${adrs.value}</div>
