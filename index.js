@@ -16,6 +16,7 @@ const submitBtn = document.querySelector('button[type="submit"]');
 const show = document.querySelector(".show");
 const t = document.querySelector(".t");
 const down = document.querySelector(".down");
+const file = document.querySelector("#pic");
 const clg_val = [],
   sess_val = [],
   deg_val = [],
@@ -30,6 +31,11 @@ submitBtn.addEventListener("click", () => {
   Array.from(companies).forEach((element) => com_val.push(element.value));
   Array.from(times).forEach((element) => times_val.push(element.value));
   Array.from(skills).forEach((element) => skills_val.push(element.value));
+  const f = file.files[0];
+  let imgsrc;
+  if (f) {
+    imgsrc = URL.createObjectURL(f); 
+  }
   let html = `
     <html lang="en">
     <head>
@@ -178,6 +184,7 @@ submitBtn.addEventListener("click", () => {
     <div class="container">
         <div class="left">
         <div class="img">
+        <img src=${imgsrc} alt="user picture" />
         </div>
         <h3>ABOUT ME</h3>
         <p class="about-content">
@@ -204,8 +211,9 @@ submitBtn.addEventListener("click", () => {
             <h1><i class="fa-solid fa-graduation-cap"></i> Education</h1>
             <div class="info-ed">
             <ul>
-            ${clg_val.map(
-              (clg, indx) => `
+            ${clg_val
+              .map(
+                (clg, indx) => `
                 <li class="ed-li">
                 <div class="left-ed">
                     <h4 class="ed-year">${sess_val[indx]}</h4>
@@ -216,7 +224,8 @@ submitBtn.addEventListener("click", () => {
                 </div>
                 </li>
                 `
-            )}
+              )
+              .join("")}
 
             </ul>
             </div>
@@ -224,25 +233,29 @@ submitBtn.addEventListener("click", () => {
         <div class="experience">
             <h3><i class="fa-brands fa-black-tie"></i> Experience</h3>
             <ul>
-            ${times_val.map(
-              (times, indx) => `
+            ${times_val
+              .map(
+                (times, indx) => `
             <li class="e-li">
                 <div class="right-e">${times}</div>
                 <p class="name-e">${com_val[indx]}</p>
             </li>  
                 `
-            )}
+              )
+              .join("")}
             
             </ul>
         </div>
         <div class="skills">
             <h3><i class="fa-solid fa-gears"></i> Skills</h3>
             <ul>
-            ${skills_val.map(
-              (skill, indx) => `
+            ${skills_val
+              .map(
+                (skill, indx) => `
                 <li>${skill}</li>
                 `
-            )}
+              )
+              .join("")}
             </ul>
         </div>
         </div>
@@ -253,20 +266,18 @@ submitBtn.addEventListener("click", () => {
   t.classList.add("hide");
   show.classList.remove("hide");
   show.innerHTML = html;
+  down.classList.remove("hide");
 });
 down.addEventListener("click", () => {
-  // Wait for the content to fully render
-  setTimeout(() => {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    // Use HTML element to generate PDF content
-    doc.html(show, {
-      callback: function (doc) {
-        doc.save("resume.pdf");
-      },
-      x: 10,
-      y: 10,
-    });
-  }, 100);  // Slight delay before generating the PDF (100ms)
+  if (!down.classList.contains("hide")) {
+    t.classList.remove("hide");
+    show.classList.add("hide");
+    down.innerText = "Download";
+    down.classList.add("hide");
+  } else {
+    down.innerHTML = "New One";
+    html2pdf()
+      .from(show) // Take the content from the "show" div
+      .save("resume.pdf");
+  }
 });
