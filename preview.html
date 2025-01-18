@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional Resume</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      max-width: 1200px;
+      margin: 30px auto;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .left {
+      width: 30%;
+      background-color: #283e56;
+      color: white;
+      padding: 20px;
+    }
+
+    .left h3 {
+      margin-top: 30px;
+      border-bottom: 2px solid #3c5a7a;
+      padding-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .img {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      border: 5px solid #ffffff;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-content,
+    .contact div,
+    .info-r {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .info-r h4 {
+      margin: 10px 0 5px;
+    }
+
+    .right {
+      width: 70%;
+      padding: 20px 30px;
+    }
+
+    .Cname {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .Cname h1 {
+      font-size: 30px;
+      font-weight: bold;
+      color: #283e56;
+    }
+
+    .education, .experience, .skills {
+      margin-bottom: 30px;
+    }
+
+    .education h1, .experience h3, .skills h3 {
+      font-size: 20px;
+      color: #283e56;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-ed ul, .experience ul, .skills ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .ed-li, .e-li {
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ed-year, .right-e {
+      font-size: 14px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .ed-name, .name-e {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+      color: #283e56;
+    }
+
+    .ed-about {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .skills ul li {
+      font-size: 14px;
+      background: #e3f2fd;
+      color: #283e56;
+      padding: 5px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="img">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.tLotgCDtzgTdwJcTiXWRCwHaEK&pid=Api&P=0&h=180" alt="Profile Picture">
+      </div>
+      <h3>ABOUT ME</h3>
+      <p class="about-content">
+        Enthusiastic and motivated professional with a strong background in web development and computer applications. Passionate about delivering high-quality solutions.
+      </p>
+      <h3>CONTACT</h3>
+      <div class="adrs">160 Baston, USA</div>
+      <div class="phone">000-4667-5678</div>
+      <div class="email">email@example.com</div>
+      <h3>REFERENCE</h3>
+      <div class="info-r">
+        <h4>XYZ</h4>
+        <p>HR Manager, Blue Tie Business</p>
+        <p>000-1243-1234</p>
+        <p>xyz@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="Cname">
+        <h1>ABC RANA</h1>
+      </div>
+      <div class="education">
+        <h1><i class="fa-solid fa-graduation-cap"></i> Education</h1>
+        <div class="info-ed">
+          <ul>
+            <li class="ed-li">
+              <div class="left-ed">
+                <h4 class="ed-year">2020-2023</h4>
+              </div>
+              <div class="right-ed">
+                <h4 class="ed-name">Bachelor of Computer Application</h4>
+                <p class="ed-about">SDSSS Yamunanagar, Jagadhri, Haryana, India</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="experience">
+        <h3><i class="fa-brands fa-black-tie"></i> Experience</h3>
+        <ul>
+          <li class="e-li">
+            <div class="right-e">2020-2023</div>
+            <p class="name-e">JY Business</p>
+          </li>
+        </ul>
+      </div>
+      <div class="skills">
+        <h3><i class="fa-solid fa-gears"></i> Skills</h3>
+        <ul>
+          <li>C++</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Node.js</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
